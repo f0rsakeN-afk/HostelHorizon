@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import logo from '../assets/logo.png';
 
 const Logo = () => {
   return (
-    <div>Logo</div>
-  )
-}
+    <div className=''>
+      <img src={logo} alt="logo-image" className="h-24" />
+    </div>
+  );
+};
 
-export default Logo
+export default Logo;
