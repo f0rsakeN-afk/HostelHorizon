@@ -1,12 +1,11 @@
-import React from 'react'
-import Logo from './Logo'
+import React from 'react';
 
 const Header = () => {
   return (
-    <div>
-      Header
+    <div className="flex items-center p-4">
+      <h2 className="">Header</h2>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

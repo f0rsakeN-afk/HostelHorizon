@@ -6,13 +6,15 @@ import Header from './Header';
 
 const AppLayout = () => {
   return (
-    <div className="container grid h-screen w-full grid-cols-7 px-6">
+    <div className=" grid h-screen w-full grid-cols-7 pl-6">
       <Sidebar />
-      <div className="col-span-6">
-        <Header />
-        <main className="bg-gray-100">
-          <Outlet />
-        </main>
+      <div className=" col-span-6  ">
+        <div className="grid h-screen grid-rows-12">
+          <Header />
+          <main className="row-span-11 bg-gray-50  p-4">
+            <Outlet />
+          </main>
+        </div>
       </div>
     </div>
   );

@@ -1,24 +1,43 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
+import { FaHome, FaCalendarAlt, FaUsers } from 'react-icons/fa';
+import { MdOutlineBedroomParent } from 'react-icons/md';
+import { IoMdSettings } from 'react-icons/io';
+import Navlink from './Navlink';
 
 const MainNav = () => {
   return (
     <nav>
-      <ul className="flex flex-col gap-y-2 pt-8 text-xl font-semibold text-gray-700">
-        <li>
-          <NavLink to="/dashboard">DashBoard</NavLink>
+      <ul className="flex flex-col gap-y-4 pt-8 text-xl font-medium text-gray-700">
+        <li className=''>
+          <Navlink to="/dashboard">
+            <FaHome />
+            Home
+          </Navlink>
         </li>
         <li>
-          <NavLink to="/bookings">Bookings</NavLink>
+          <Navlink to="/bookings">
+            <FaCalendarAlt />
+            Bookings
+          </Navlink>
         </li>
         <li>
-          <NavLink to="/rooms">Rooms</NavLink>
+          <Navlink to="/rooms">
+            <MdOutlineBedroomParent />
+            Rooms
+          </Navlink>
         </li>
         <li>
-          <NavLink to="/students">Students</NavLink>
+          <Navlink to="/students">
+            <FaUsers />
+            Students
+          </Navlink>
         </li>
         <li>
-          <NavLink to="/settings">Settings</NavLink>
+          <Navlink to="/settings">
+            <IoMdSettings />
+            Settings
+          </Navlink>
         </li>
       </ul>
     </nav>

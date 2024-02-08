@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Spinner from '../ui/Spinner';
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div>
+      <Spinner />
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
