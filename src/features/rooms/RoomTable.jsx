@@ -17,12 +17,15 @@ const CabinTable = () => {
   return (
     <div className="" role="tab">
       <div
-        className="text-md grid grid-cols-4 pt-8 font-semibold text-gray-700"
+        className="text-md grid grid-cols-6 pt-8 font-semibold text-gray-700"
         role="row"
       >
+        <h1 className=""></h1>
         <h1 className="">Room</h1>
         <h1 className="">Capacity</h1>
-        <h1 className="">Price</h1>
+        <h1 className="">
+          Price<span className="text-xs">(RS)</span>
+        </h1>
         <h1 className="">Description</h1>
       </div>
       {rooms.map((room) => (
