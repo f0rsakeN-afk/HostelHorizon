@@ -27,10 +27,10 @@ const RoomRow = ({ room }) => {
 
   return (
     <>
-      <div className="">
+      <div className="border-b-2">
         <div
           role="row"
-          className=" grid  grid-cols-6 flex-col items-center gap-4 border-b-2 py-4 text-sm text-gray-700"
+          className=" grid  grid-cols-6 flex-col items-center gap-4  py-4 text-sm text-gray-700"
         >
           <img
             src={image}
@@ -63,8 +63,8 @@ const RoomRow = ({ room }) => {
               <RiDeleteBin5Line /> Delete
             </button>
           </div>
-          {show && <CreateRoomForm />}
         </div>
+          {show && <CreateRoomForm roomToedit={room}/>}
       </div>
     </>
   );
