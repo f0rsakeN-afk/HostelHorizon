@@ -1,18 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { getRooms } from '../../services/apiRooms';
 import Spinner from '../../ui/Spinner';
 import RoomRow from './RoomRow';
+import { getRooms } from './UseRooms';
 
 const CabinTable = () => {
-  const {
-    isLoading,
-    data: rooms,
-    error,
-  } = useQuery({
-    queryKey: ['rooms'],
-    queryFn: getRooms,
-  });
+  const { isLoading, rooms } = getRooms();
   if (isLoading) return <Spinner />;
   return (
     <div className="" role="tab">

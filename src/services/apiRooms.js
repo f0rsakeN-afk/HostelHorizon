@@ -1,6 +1,6 @@
 import supabase, { supabaseUrl } from './supabase';
 
-export async function getRooms() {
+export async function getRoomsApi() {
   let { data, error } = await supabase.from('rooms').select('*');
 
   if (error) {
@@ -11,7 +11,7 @@ export async function getRooms() {
   return data;
 }
 
-export async function createRoom(room) {
+export async function createRoomApi(room) {
   const imageName = `${Math.random()}-${room.image.name}`.replaceAll('/', '');
   const imagePath = `${supabaseUrl}/storage/v1/object/public/roomImages/${imageName}`;
   const { data, error } = await supabase
@@ -35,10 +35,10 @@ export async function createRoom(room) {
   }
 }
 
-export async function editRoom() {
+export async function editRoomApi(newRoom, id) {
   const { data, error } = await supabase
     .from('rooms')
-    .update({ other_column: 'otherValue' })
+    .update([{...newRoom}])
     .eq('id', id)
     .select();
 
@@ -48,7 +48,7 @@ export async function editRoom() {
   }
 }
 
-export async function deleteRoom(id) {
+export async function deleteRoomApi(id) {
   const { error } = await supabase.from('rooms').delete().eq('id', id);
 
   if (error) {

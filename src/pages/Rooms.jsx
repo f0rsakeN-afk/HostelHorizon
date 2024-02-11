@@ -19,7 +19,7 @@ const Rooms = () => {
           className="rounded-lg  bg-[#936ce0] px-4 py-2 text-xl font-semibold tracking-wide   text-gray-800 ring-offset-2 transition-all duration-300 ease-linear hover:text-2xl focus:outline-none focus:ring focus:ring-[#936ce0]  "
           onClick={() => setShow((show) => !show)}
         >
-          Add room
+          {show?`Close room`:`Add room`}
         </button>
       </section>
       {show && <CreateRoomForm />}

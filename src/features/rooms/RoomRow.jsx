@@ -1,29 +1,13 @@
 import React, { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit} from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import { deleteRoom } from '../../services/apiRooms';
 import CreateRoomForm from './CreateRoomForm';
+import { useDeleteRoom } from './DeleteRoom';
 
 const RoomRow = ({ room }) => {
   const { id: roomId, name, maxCapacity, price, image, description } = room;
-
-  const queryClient = useQueryClient();
+  const { isDeleting, deleteRoom } = useDeleteRoom();
   const [show, setShow] = useState(false);
-
-  const { isLoading: isDeleting, mutate } = useMutation({
-    mutationFn: (id) => deleteRoom(id),
-    onSuccess: () => {
-      toast.success('Room successfully deleted');
-      queryClient.invalidateQueries({
-        queryKey: ['rooms'],
-      });
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    },
-  });
 
   return (
     <>
@@ -47,6 +31,7 @@ const RoomRow = ({ room }) => {
           <p className="truncate">{description}</p>
 
           <div className="flex items-center justify-center gap-x-4">
+          
             <button
               onClick={() => setShow((show) => !show)}
               className=" transirion  all flex items-center justify-center gap-1  rounded-md bg-gray-200 px-3 py-2   font-semibold text-green-600 ring-offset-2 ease-in-out hover:bg-gray-300 hover:text-green-700 focus:outline-none focus:ring focus:ring-gray-300 "
@@ -56,7 +41,7 @@ const RoomRow = ({ room }) => {
             </button>
 
             <button
-              onClick={() => mutate(roomId)}
+              onClick={() => deleteRoom(roomId)}
               disabled={isDeleting}
               className=" flex items-center justify-center gap-1 rounded-md bg-red-100 px-3 py-2 text-red-500 ring-offset-2 transition-colors hover:bg-red-200 hover:text-red-600 focus:outline-none  focus:ring focus:ring-red-200"
             >
@@ -64,7 +49,7 @@ const RoomRow = ({ room }) => {
             </button>
           </div>
         </div>
-          {show && <CreateRoomForm />}
+        {show && <CreateRoomForm roomToEdit={room} />}
       </div>
     </>
   );

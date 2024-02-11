@@ -1,48 +1,43 @@
 import React from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { createRoom, editRoom } from '../../services/apiRooms';
+import { CreateRoom } from './CreateRoom';
+import { EditRoom } from './EditRoom';
 
-const CreateRoomForm = () => {
-  const { handleSubmit, register, formState, reset } = useForm();
-  const queryClient = useQueryClient();
+const CreateRoomForm = ({ roomToEdit = {} }) => {
+  const { isCreating, create } = CreateRoom();
+  const { isEditing, edit } = EditRoom();
+  const { id: editId, ...editValues } = roomToEdit;
+  const isEditSession = Boolean(editId);
+  const { handleSubmit, register, formState, reset } = useForm({
+    defaultValues: isEditSession ? editValues : '',
+  });
   const { errors } = formState;
 
-  const { isLoading: isCreating, mutate: create } = useMutation({
-    mutationFn: createRoom,
-    onSuccess: () => {
-      toast.success('Room successfully created');
-      queryClient.invalidateQueries({
-        queryKey: ['rooms'],
-      });
-      reset();
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    },
-  });
-
-  const { isLoading: isEditing, mutate: edit } = useMutation({
-    mutationFn: () => editRoom(),
-    onSuccess: () => {
-      toast.success('Room successfully edited');
-      queryClient.invalidateQueries({
-        queryKey: ['rooms'],
-      });
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    },
-  });
-
   function onSubmit(data) {
-    create({ ...data, image: data.image[0] });
-    console.log(data);
+    if (isEditSession) {
+      edit(
+        { newRoom: { ...data }, id: editId },
+        {
+          onSuccess: (data) => {
+            reset();
+          },
+        },
+      );
+    } else {
+      create(
+        { ...data, image: data.image[0] },
+        {
+          onSuccess: (data) => reset(),
+        },
+      );
+    }
   }
   function onError(errors) {
     console.log(errors);
   }
+
+  const isWorking = isCreating || isEditing;
+
   return (
     <div className="bg-purple-100 px-[25rem] py-8">
       <form
@@ -119,25 +114,34 @@ const CreateRoomForm = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor=""
-            className="text-gray-700"
-            error={errors?.image?.message}
-          >
-            Image
-          </label>
-          <input
-            type="file"
-            id="image"
-            disabled={isCreating}
-            accept="image/*"
-            {...register('image', {
-              required: 'This field is required',
-            })}
-          />
-        </div>
-        <button className>xyz</button>
+        {isEditSession ? (
+          ''
+        ) : (
+          <div className="flex flex-col gap-1">
+            <label
+              htmlFor=""
+              className="text-gray-700"
+              error={errors?.image?.message}
+            >
+              Image
+            </label>
+            <input
+              type="file"
+              id="image"
+              disabled={isCreating}
+              accept="image/*"
+              {...register('image', {
+                required: 'This field is required',
+              })}
+            />
+          </div>
+        )}
+        <button
+          className="rounded-lg  bg-[#936ce0] px-4 py-2 text-xl font-semibold tracking-wide   text-gray-800 ring-offset-2 transition-all duration-300 ease-linear hover:text-2xl focus:outline-none focus:ring focus:ring-[#936ce0]   "
+          disabled={isWorking}
+        >
+          {isEditSession ? `Edit room` : 'Add room'}
+        </button>
       </form>
     </div>
   );
