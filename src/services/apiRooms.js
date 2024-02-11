@@ -11,45 +11,40 @@ export async function getRooms() {
   return data;
 }
 
-export async function createEditRoom(newRoom, id) {
-  const hasImagePath = newRoom.image?.startsWith?.(supabaseUrl);
-
-  const imageName = `${Math.random()}-${newRoom.image.name}`.replaceAll(
-    '/',
-    '',
-  );
-
-  const imagePath = hasImagePath
-    ? newRoom.image
-    : `${supabaseUrl}/storage/v1/object/public/room`;
-
-  let query = supabase.from('rooms');
-
-  if (!id) query = query.insert([{ ...newRoom, image: imagePath }]).select();
-  if (id)
-    query = query
-      .update({ ...newRoom, image: imagePath })
-      .eq('id', id)
-      .select();
-  const { data, error } = await query.select().single();
+export async function createRoom(room) {
+  const imageName = `${Math.random()}-${room.image.name}`.replaceAll('/', '');
+  const imagePath = `${supabaseUrl}/storage/v1/object/public/roomImages/${imageName}`;
+  const { data, error } = await supabase
+    .from('rooms')
+    .insert([{ ...room, image: imagePath }])
+    .select();
 
   if (error) {
     console.error(error);
-    throw new Error('Rooms could not be created');
+    throw new Error('Room could not be created');
   }
 
-  //2. upload image
+  //https://afjxfgpwdqxbmrurwtkh.supabase.co/storage/v1/object/public/roomImages/signal-2023-12-29-205351.jpeg
+
   const { error: storageError } = await supabase.storage
     .from('roomImages')
-    .upload(imageName, newRoom.image);
+    .upload(imageName, room.image);
 
-  //3.delete the cabin if there was an error uploading storage error
   if (storageError) {
-    await supabase.from('rooms').delete().eq('id', data.id);
-    console.error(storageError);
-    throw new Error(
-      'Room image could not be uploaded and the room was not created',
-    );
+    const { error } = await supabase.from('rooms').delete().eq('id', data.id);
+  }
+}
+
+export async function editRoom() {
+  const { data, error } = await supabase
+    .from('rooms')
+    .update({ other_column: 'otherValue' })
+    .eq('id', id)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error('Room could not be edited');
   }
 }
 

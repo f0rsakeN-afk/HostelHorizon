@@ -64,7 +64,7 @@ const RoomRow = ({ room }) => {
             </button>
           </div>
         </div>
-          {show && <CreateRoomForm roomToedit={room}/>}
+          {show && <CreateRoomForm />}
       </div>
     </>
   );

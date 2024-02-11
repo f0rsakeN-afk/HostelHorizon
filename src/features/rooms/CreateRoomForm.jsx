@@ -1,21 +1,16 @@
 import React from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Form, useForm, useFormState } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { createEditRoom } from '../../services/apiRooms';
+import { createRoom, editRoom } from '../../services/apiRooms';
 
-const CreateRoomForm = ({ roomToedit = {} }) => {
+const CreateRoomForm = () => {
+  const { handleSubmit, register, formState, reset } = useForm();
   const queryClient = useQueryClient();
-
-  const { id: editId, ...editValue } = roomToedit;
-  const isEditSession = Boolean(editId);
-  const { register, handleSubmit, reset, formState } = useForm({
-    defaultValues: isEditSession ? editValue : {},
-  });
-
   const { errors } = formState;
-  const { isLoading: isCreating, mutate: createRoom } = useMutation({
-    mutationFn: createEditRoom,
+
+  const { isLoading: isCreating, mutate: create } = useMutation({
+    mutationFn: createRoom,
     onSuccess: () => {
       toast.success('Room successfully created');
       queryClient.invalidateQueries({
@@ -23,31 +18,31 @@ const CreateRoomForm = ({ roomToedit = {} }) => {
       });
       reset();
     },
-    onError: (err) => toast.error(err.message),
+    onError: (err) => {
+      toast.error(err.message);
+    },
   });
 
-  const { isLoading: isEditing, mutate: editRoom } = useMutation({
-    mutationFn: ({ newroomData, id }) => createEditRoom({ newroomData, id }),
+  const { isLoading: isEditing, mutate: edit } = useMutation({
+    mutationFn: () => editRoom(),
     onSuccess: () => {
       toast.success('Room successfully edited');
       queryClient.invalidateQueries({
         queryKey: ['rooms'],
       });
     },
+    onError: (err) => {
+      toast.error(err.message);
+    },
   });
 
   function onSubmit(data) {
-    const image = typeof data.image === 'string' ? data.image : data.image[0];
-    if (isEditSession)
-      editRoom({ newroomData: { ...data, image }, id: editId });
-    else createRoom({ ...data, image: data.image });
+    create({ ...data, image: data.image[0] });
+    console.log(data);
   }
-
   function onError(errors) {
-    console.error(errors);
+    console.log(errors);
   }
-  const isWorking = isCreating || isEditing;
-
   return (
     <div className="bg-purple-100 px-[25rem] py-8">
       <form
@@ -135,14 +130,14 @@ const CreateRoomForm = ({ roomToedit = {} }) => {
           <input
             type="file"
             id="image"
+            disabled={isCreating}
+            accept="image/*"
             {...register('image', {
-              required: isEditSession ? false : 'This field is required',
+              required: 'This field is required',
             })}
           />
         </div>
-        <button disabled={isWorking} className=''>
-          {isEditSession ? ` Edit room` : `Add room`}
-        </button>
+        <button className>xyz</button>
       </form>
     </div>
   );
