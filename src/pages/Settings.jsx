@@ -1,8 +1,11 @@
 import React from 'react'
+import SettingsRow from '../features/settings/SettingsRow'
 
 const Settings = () => {
   return (
-    <div>Settings</div>
+    <div className="">
+      <SettingsRow/>
+  </div>
   )
 }
 
