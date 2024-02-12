@@ -13,7 +13,7 @@ export async function UpdateSettingsApi() {
   const { data, error } = await supabase
     .from('settings')
     .update({ other_column: 'otherValue' })
-    .eq('some_column', 'someValue')
+    .eq('id', 1)
     .select();
 
   if (error) {

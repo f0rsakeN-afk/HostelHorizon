@@ -2,14 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import CabinTable from '../features/rooms/RoomTable';
 import CreateRoomForm from '../features/rooms/CreateRoomForm';
+import Title from '../ui/Title';
 
 const Rooms = () => {
   const [show, setShow] = useState(false);
   return (
     <div>
-      <h1 className="text-xl font-semibold  uppercase text-gray-700 underline decoration-[#936ce0] underline-offset-4">
-        All rooms
-      </h1>
+     <Title text={`All rooms`}/>
 
       <div className="">
         <CabinTable />

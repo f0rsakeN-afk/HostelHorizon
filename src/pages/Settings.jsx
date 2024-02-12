@@ -1,12 +1,14 @@
-import React from 'react'
-import SettingsRow from '../features/settings/SettingsRow'
+import React from 'react';
+import SettingsTable from '../features/settings/SettingsTable';
+import Title from '../ui/Title';
 
 const Settings = () => {
   return (
     <div className="">
-      <SettingsRow/>
-  </div>
-  )
-}
+     <Title text={`Hostel settings`}/>
+      <SettingsTable />
+    </div>
+  );
+};
 
-export default Settings
+export default Settings;
