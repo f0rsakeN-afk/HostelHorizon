@@ -1,5 +1,6 @@
 import React from 'react';
 import { getSettings } from './GetSettings';
+import { EditSettings } from './UpdateSettings';
 import Spinner from '../../ui/Spinner';
 
 function SettingsTable() {
@@ -13,40 +14,57 @@ function SettingsTable() {
       minStayingDay,
     } = {},
   } = getSettings();
+
+  const { editing, editSettings } = EditSettings();
   if (settingsLoading) return <Spinner />;
+
+  function handleBlur(e, field) {
+    const { value } = e.target;
+
+    if (!value) return;
+    editSettings({ [field]: value });
+  }
 
   return (
     <div className="flex w-1/3 flex-col gap-4 ">
-      <section className="flex flex-col gap-1 ">
+      <Label className="flex flex-col gap-1 ">
         <label className="text-base text-gray-700">Minimum price</label>
         <input
           type="number"
           className="rounded-md bg-gray-100 p-2 outline-none "
           defaultValue={minPrice}
+          disabled={editing}
+          onBlur={(e) => handleBlur(e, 'minPrice')}
         />
-      </section>
-      <section className="flex flex-col gap-1 ">
+      </Label>
+      <Label className="flex flex-col gap-1 ">
         <label className="text-base text-gray-700">Maximum price</label>
         <input
           type="number"
           className="rounded-md bg-gray-100 p-2 outline-none "
           defaultValue={maxPrice}
+          disabled={editing}
+          onBlur={(e) => handleBlur(e, 'maxPrice')}
         />
-      </section>
-      <section className="flex flex-col gap-1 ">
+      </Label>
+      <Label className="flex flex-col gap-1 ">
         <label className="text-base text-gray-700">Minimum capacity</label>
         <input
           type="number"
           className="rounded-md bg-gray-100 p-2 outline-none "
           defaultValue={minCapacity}
+          onBlur={(e) => handleBlur(e, 'minCapacity')}
+          disabled={editing}
         />
-      </section>
+      </Label>
       <Label>
         <label className="text-base text-gray-700">Maximum capacity</label>
         <input
           type="number"
           className="rounded-md bg-gray-100 p-2 outline-none "
           defaultValue={maxCapacity}
+          disabled={editing}
+          onBlur={(e) => handleBlur(e, 'maxCapacity')}
         />
       </Label>
       <Label>
@@ -55,6 +73,8 @@ function SettingsTable() {
           type="number"
           className="rounded-md bg-gray-100 p-2 outline-none "
           defaultValue={minStayingDay}
+          disabled={editing}
+          onBlur={(e) => handleBlur(e, 'minStayingDay')}
         />
       </Label>
     </div>
@@ -62,6 +82,7 @@ function SettingsTable() {
 }
 
 const Label = ({ children }) => {
-  return <label className="flex flex-col gap-1">{children}</label>;
+  return <section className="flex flex-col gap-1">{children}</section>;
 };
+
 export default SettingsTable;

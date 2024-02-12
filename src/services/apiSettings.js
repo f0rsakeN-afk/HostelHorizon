@@ -9,12 +9,12 @@ export async function GetSettingsApi() {
   return data;
 }
 
-export async function UpdateSettingsApi() {
+export async function UpdateSettingsApi(newSettings) {
   const { data, error } = await supabase
     .from('settings')
-    .update({ other_column: 'otherValue' })
+    .update(newSettings)
     .eq('id', 1)
-    .select();
+    .single();
 
   if (error) {
     console.error(error);
