@@ -1,8 +1,11 @@
 import React from 'react'
+import Title from "../ui/Title"
 
 const Students = () => {
   return (
-    <div>Students</div>
+    <div>
+      <Title text={`All students`} />
+    </div>
   )
 }
 

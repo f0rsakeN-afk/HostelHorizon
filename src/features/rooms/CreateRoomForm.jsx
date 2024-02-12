@@ -39,7 +39,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
   const isWorking = isCreating || isEditing;
 
   return (
-    <div className="bg-purple-100 px-[25rem] py-8">
+    <div className=" lg:px-[25rem] px-2 py-8">
       <form
         onSubmit={handleSubmit(onSubmit, onError)}
         className="items-left m-auto flex flex-col justify-center gap-y-4"

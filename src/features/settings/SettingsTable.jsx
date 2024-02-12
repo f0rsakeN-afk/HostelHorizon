@@ -26,7 +26,7 @@ function SettingsTable() {
   }
 
   return (
-    <div className="flex w-1/3 flex-col gap-4 ">
+    <div className="flex lg:w-1/3 flex-col gap-4 ">
       <Label className="flex flex-col gap-1 ">
         <label className="text-base text-gray-700">Minimum price</label>
         <input

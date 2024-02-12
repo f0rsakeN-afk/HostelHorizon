@@ -1,8 +1,11 @@
 import React from 'react'
+import Title from '../ui/Title'
 
 const Bookings = () => {
   return (
-    <div>Bookings</div>
+    <div>
+      <Title text={`Bookings`}/>
+    </div>
   )
 }
 

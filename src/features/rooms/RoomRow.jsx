@@ -11,15 +11,15 @@ const RoomRow = ({ room }) => {
 
   return (
     <>
-      <div className="border-b-2">
+      <div className="border-b-2 border-gray-400">
         <div
           role="row"
-          className=" grid  grid-cols-6 flex-col items-center gap-4  py-4 text-sm text-gray-700"
+          className=" grid grid-cols-6 flex-col items-center gap-x-4  py-4 text-sm text-gray-700"
         >
           <img
             src={image}
             alt="room-image"
-            className="h-24 w-44 rounded-sm drop-shadow-xl"
+            className="h-24 w-44 rounded-sm drop-shadow-xl "
           />
 
           <h1 className="capitalize">{name}</h1>
