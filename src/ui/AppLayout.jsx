@@ -10,7 +10,7 @@ const AppLayout = () => {
       <div className=" col-span-6  ">
         <div className="grid h-screen grid-rows-12">
           <Header />
-          <main className="row-span-11 bg-gray-50  p-4 overflow-scroll">
+          <main className="row-span-11 bg-[#E8E8E8]  p-4 overflow-scroll">
             <Outlet />
           </main>
         </div>

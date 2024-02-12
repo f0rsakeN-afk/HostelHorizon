@@ -34,7 +34,7 @@ const RoomRow = ({ room }) => {
           
             <button
               onClick={() => setShow((show) => !show)}
-              className=" transirion  all flex items-center justify-center gap-1  rounded-md bg-gray-200 px-3 py-2   font-semibold text-green-600 ring-offset-2 ease-in-out hover:bg-gray-300 hover:text-green-700 focus:outline-none focus:ring focus:ring-gray-300 "
+              className=" transirion  all flex items-center justify-center gap-1  rounded-md bg-gray-300 px-3 py-2   font-semibold text-green-600 ring-offset-2 ease-in-out hover:bg-gray-400 hover:text-green-700 focus:outline-none focus:ring focus:ring-gray-300 "
             >
               <FaEdit />
               Edit
@@ -43,7 +43,7 @@ const RoomRow = ({ room }) => {
             <button
               onClick={() => deleteRoom(roomId)}
               disabled={isDeleting}
-              className=" flex items-center justify-center gap-1 rounded-md bg-red-100 px-3 py-2 text-red-500 ring-offset-2 transition-colors hover:bg-red-200 hover:text-red-600 focus:outline-none  focus:ring focus:ring-red-200"
+              className=" flex items-center justify-center gap-1 rounded-md bg-red-200 px-3 py-2 text-red-500 ring-offset-2 transition-colors hover:bg-red-300 hover:text-red-600 focus:outline-none  focus:ring focus:ring-red-200"
             >
               <RiDeleteBin5Line /> Delete
             </button>
