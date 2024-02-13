@@ -39,7 +39,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
   const isWorking = isCreating || isEditing;
 
   return (
-    <div className=" lg:px-[25rem] px-2 py-8">
+    <div className=" px-2 py-8 lg:px-[25rem]">
       <form
         onSubmit={handleSubmit(onSubmit, onError)}
         className="items-left m-auto flex flex-col justify-center gap-y-4"
@@ -47,7 +47,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
         <div className="flex flex-col gap-1">
           <label
             htmlFor=""
-            className="text-gray-700"
+            className=" text-gray-700 dark:text-gray-200"
             error={errors?.name?.message}
           >
             Name
@@ -55,7 +55,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
           <input
             type="text"
             id="name"
-            className="rounded-md  bg-gray-100 p-2 outline-none focus:ring focus:ring-gray-100"
+            className="rounded-md  bg-gray-100 p-2 text-gray-700 outline-none focus:ring focus:ring-gray-100 dark:bg-gray-500 dark:text-gray-200"
             placeholder="Enter room name"
             {...register('name', { required: 'This field is required' })}
           />
@@ -64,7 +64,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
         <div className="flex flex-col gap-1">
           <label
             htmlFor=""
-            className="text-gray-700"
+            className=" text-gray-700 dark:text-gray-200"
             error={errors?.maxCapacity?.message}
           >
             Max capacity
@@ -73,7 +73,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
             type="text"
             id="maxCapacity"
             placeholder="Enter max capacity"
-            className="rounded-md  bg-gray-100 p-2 outline-none focus:ring focus:ring-gray-100"
+            className="rounded-md  bg-gray-100 p-2 text-gray-700 outline-none focus:ring focus:ring-gray-100 dark:bg-gray-500 dark:text-gray-200"
             {...register('maxCapacity', { required: 'This field is required' })}
           />
         </div>
@@ -81,7 +81,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
         <div className="flex flex-col gap-1">
           <label
             htmlFor=""
-            className="text-gray-700"
+            className=" text-gray-700 dark:text-gray-200"
             error={errors?.price?.message}
           >
             Price
@@ -90,7 +90,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
             type="text"
             id="price"
             placeholder="Enter the price"
-            className="rounded-md  bg-gray-100 p-2 outline-none focus:ring focus:ring-gray-100"
+            className="rounded-md  bg-gray-100 p-2 text-gray-700 outline-none focus:ring focus:ring-gray-100 dark:bg-gray-500 dark:text-gray-200"
             {...register('price', { required: 'This field is required' })}
           />
         </div>
@@ -98,7 +98,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
         <div className="flex flex-col gap-1">
           <label
             htmlFor=""
-            className="text-gray-700"
+            className=" text-gray-700 dark:text-gray-200"
             error={errors?.description?.message}
           >
             Description
@@ -107,7 +107,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
             type="text"
             id="description"
             placeholder="Enter description"
-            className="rounded-md  bg-gray-100 p-2 outline-none focus:ring focus:ring-gray-100"
+            className="rounded-md  bg-gray-100 p-2 text-gray-700 outline-none focus:ring focus:ring-gray-100 dark:bg-gray-500 dark:text-gray-200"
             {...register('description', {
               required: 'This  field is required',
             })}
@@ -120,7 +120,7 @@ const CreateRoomForm = ({ roomToEdit = {} }) => {
           <div className="flex flex-col gap-1">
             <label
               htmlFor=""
-              className="text-gray-700"
+              className=" text-gray-700 dark:text-gray-200"
               error={errors?.image?.message}
             >
               Image

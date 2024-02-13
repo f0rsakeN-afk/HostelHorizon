@@ -26,52 +26,62 @@ function SettingsTable() {
   }
 
   return (
-    <div className="flex lg:w-1/3 flex-col gap-4 ">
+    <div className="flex flex-col gap-4 lg:w-1/3 ">
       <Label className="flex flex-col gap-1 ">
-        <label className="text-base text-gray-700">Minimum price</label>
+        <label className="text-base text-gray-700 dark:text-gray-200">
+          Minimum price
+        </label>
         <input
           type="number"
-          className="rounded-md bg-gray-100 p-2 outline-none "
+          className="rounded-md bg-gray-100 p-2 text-gray-700 outline-none dark:bg-gray-500 dark:text-gray-300 "
           defaultValue={minPrice}
           disabled={editing}
           onBlur={(e) => handleBlur(e, 'minPrice')}
         />
       </Label>
       <Label className="flex flex-col gap-1 ">
-        <label className="text-base text-gray-700">Maximum price</label>
+        <label className="text-base text-gray-700 dark:text-gray-200">
+          Maximum price
+        </label>
         <input
           type="number"
-          className="rounded-md bg-gray-100 p-2 outline-none "
+          className="rounded-md bg-gray-100 p-2 text-gray-700 outline-none dark:bg-gray-500 dark:text-gray-300 "
           defaultValue={maxPrice}
           disabled={editing}
           onBlur={(e) => handleBlur(e, 'maxPrice')}
         />
       </Label>
       <Label className="flex flex-col gap-1 ">
-        <label className="text-base text-gray-700">Minimum capacity</label>
+        <label className="text-base text-gray-700 dark:text-gray-200">
+          Minimum capacity
+        </label>
         <input
           type="number"
-          className="rounded-md bg-gray-100 p-2 outline-none "
+          className="rounded-md bg-gray-100 p-2 text-gray-700 outline-none dark:bg-gray-500 dark:text-gray-300 "
           defaultValue={minCapacity}
           onBlur={(e) => handleBlur(e, 'minCapacity')}
           disabled={editing}
         />
       </Label>
       <Label>
-        <label className="text-base text-gray-700">Maximum capacity</label>
+        <label className="text-base text-gray-700 dark:text-gray-200">
+          Maximum capacity
+        </label>
         <input
           type="number"
-          className="rounded-md bg-gray-100 p-2 outline-none "
+          className="rounded-md bg-gray-100 p-2 text-gray-700 outline-none dark:bg-gray-500 dark:text-gray-300 "
           defaultValue={maxCapacity}
           disabled={editing}
           onBlur={(e) => handleBlur(e, 'maxCapacity')}
         />
       </Label>
       <Label>
-        <label className="text-base text-gray-700">Minimum staying day</label>
+        <label className="text-base text-gray-700 dark:text-gray-200">
+          Minimum staying day
+        </label>
         <input
           type="number"
-          className="rounded-md bg-gray-100 p-2 outline-none "
+          className="rounded-md bg-gray-100 p-2 text-gray-700 outline-none dark:bg-gray-500 dark:text-gray-300 "
           defaultValue={minStayingDay}
           disabled={editing}
           onBlur={(e) => handleBlur(e, 'minStayingDay')}

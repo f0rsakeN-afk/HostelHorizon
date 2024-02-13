@@ -8,7 +8,7 @@ import Navlink from './Navlink';
 const MainNav = () => {
   return (
     <nav>
-      <ul className="flex flex-col gap-y-4 pt-8 text-xl font-medium text-gray-700">
+      <ul className="flex flex-col gap-y-4 pt-8 text-xl font-medium text-gray-200 dark:text-gray-100">
         <li className=''>
           <Navlink to="/dashboard">
             <FaHome />

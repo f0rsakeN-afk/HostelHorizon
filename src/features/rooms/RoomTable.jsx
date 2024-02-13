@@ -9,7 +9,7 @@ const CabinTable = () => {
   return (
     <div className="" role="tab">
       <div
-        className="text-md grid grid-cols-6 pt-8 font-semibold text-gray-700"
+        className="text-md grid grid-cols-6 pt-8 font-semibold text-gray-700 dark:text-gray-200"
         role="row"
       >
         <h1 className=""></h1>

@@ -14,7 +14,7 @@ const RoomRow = ({ room }) => {
       <div className="border-b-2 border-gray-400">
         <div
           role="row"
-          className=" grid grid-cols-6 flex-col items-center gap-x-4  py-4 text-sm text-gray-700"
+          className=" grid grid-cols-6 flex-col items-center gap-x-4  py-4 text-sm text-gray-700 dark:text-gray-200"
         >
           <img
             src={image}
