@@ -19,12 +19,12 @@ const AppLayout = () => {
         {darkMode ? (
           <IoIosSunny className="infinite animate-pulse text-yellow-500 ease-linear " />
         ) : (
-          <BsMoonStarsFill className='text-slate-100 outline-none' />
+          <BsMoonStarsFill className="text-slate-100 outline-none" />
         )}
       </button>
-      <div className=" grid h-screen w-full grid-cols-5 bg-[#297373] pl-2 dark:bg-[#0f172a] text-gray-100  lg:grid-cols-7 lg:pl-6">
+      <div className=" grid h-screen w-full grid-cols-5 bg-[#297373] pl-2 text-gray-100 dark:bg-[#0f172a]  lg:grid-cols-9 lg:pl-6">
         <Sidebar />
-        <div className=" col-span-4 lg:col-span-6  ">
+        <div className=" col-span-4 lg:col-span-8  ">
           <div className="grid h-screen grid-rows-12">
             <Header />
             <main className="row-span-11 overflow-scroll  bg-[#ebeeef] p-4  dark:bg-[#495159]">
