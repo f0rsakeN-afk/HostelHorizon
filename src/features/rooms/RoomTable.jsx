@@ -6,10 +6,31 @@ import { useSearchParams } from 'react-router-dom';
 
 const CabinTable = () => {
   const { isLoading, rooms } = getRooms();
+  //console.log(rooms);
   const [searchParams] = useSearchParams();
-  const filterValue = searchParams.get('price');
+  const filterValue = searchParams.get('price') || 'all';
+
   //console.log(filterValue);
+  let filteredRoomData;
+
+  if (filterValue === 'all') filteredRoomData = rooms;
+
+  if (filterValue === 'price-inc') {
+    const lowest = (a, b) => {
+      return a.price - b.price;
+    };
+    filteredRoomData = rooms.sort(lowest);
+  }
+
+  if (filterValue === 'price-dec') {
+    const highest = (a, b) => {
+      return b.price - a.price;
+    };
+    filteredRoomData = rooms.sort(highest);
+  }
+
   if (isLoading) return <Spinner />;
+
   return (
     <div className="" role="tab">
       <div
@@ -24,7 +45,7 @@ const CabinTable = () => {
         </h1>
         <h1 className="">Description</h1>
       </div>
-      {rooms.map((room) => (
+      {filteredRoomData.map((room) => (
         <RoomRow room={room} key={room.id} />
       ))}
     </div>
