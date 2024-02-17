@@ -14,7 +14,7 @@ function Filter({ filterField, options }) {
       <div className="flex overflow-hidden rounded-md bg-gray-300 shadow-xl dark:bg-gray-800">
         {options.map((option) => (
           <button
-            className={` justicy-center flex items-center gap-1 px-3 py-2 text-base text-gray-700 outline-none hover:bg-indigo-700 hover:text-gray-200 dark:text-gray-200 ${option.value === currentFilter ? `bg-indigo-700` : ''} `}
+            className={` flex text-gray-700 items-center justify-center gap-1 px-3 py-2 text-base  outline-none hover:bg-indigo-700 hover:text-gray-200 dark:text-gray-200 ${option.value === currentFilter ? `bg-indigo-700 text-gray-200` : ''}  `}
             onClick={() => handleClick(option.value)}
           >
             {option.label}
