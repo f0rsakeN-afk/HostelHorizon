@@ -10,10 +10,14 @@ const CabinTable = () => {
   const [searchParams] = useSearchParams();
   const filterValue = searchParams.get('price') || 'all';
 
+
   //console.log(filterValue);
   let filteredRoomData;
 
-  if (filterValue === 'all') filteredRoomData = rooms;
+  if (filterValue === 'all') {
+
+    filteredRoomData = rooms;
+  }
 
   if (filterValue === 'price-inc') {
     const lowest = (a, b) => {
