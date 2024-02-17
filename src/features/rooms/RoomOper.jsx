@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Filter from '../../ui/Filter';
 
 const RoomOper = () => {
   return (
-    <div>RoomOper</div>
-  )
-}
+    <div className="">
+      <Filter/>
+  </div>
+  );
+};
 
-export default RoomOper
+export default RoomOper;

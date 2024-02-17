@@ -13,6 +13,7 @@ import Account from './pages/Account';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 
+
 const App = () => {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -35,6 +36,7 @@ const App = () => {
               <Route path="settings" element={<Settings />} />
               <Route path="account" element={<Account />} />
               <Route path="rooms" element={<Rooms />} />
+             
             </Route>
             <Route path="login" element={<Login />} />
             <Route path="*" element={<PageNotFound />} />

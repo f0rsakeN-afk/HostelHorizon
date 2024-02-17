@@ -2,9 +2,13 @@ import React from 'react';
 import Spinner from '../../ui/Spinner';
 import RoomRow from './RoomRow';
 import { getRooms } from './UseRooms';
+import { useSearchParams } from 'react-router-dom';
 
 const CabinTable = () => {
   const { isLoading, rooms } = getRooms();
+  const [searchParams] = useSearchParams();
+  const filterValue = searchParams.get('price');
+  //console.log(filterValue);
   if (isLoading) return <Spinner />;
   return (
     <div className="" role="tab">
