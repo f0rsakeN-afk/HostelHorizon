@@ -19,6 +19,7 @@ const CabinTable = () => {
     filteredRoomData = rooms;
   }
 
+  
   if (filterValue === 'price-inc') {
     const lowest = (a, b) => {
       return a.price - b.price;

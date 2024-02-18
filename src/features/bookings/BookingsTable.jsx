@@ -2,9 +2,18 @@ import React from 'react';
 import { getBookings } from './Bookings';
 import Spinner from '../../ui/Spinner';
 import BookingsRow from './BookingsRow';
+import { useSearchParams } from 'react-router-dom';
 
 function BookingsTable() {
   const { isLoading, bookings } = getBookings();
+
+  const [searchParams] = useSearchParams();
+  const filterValue = searchParams.get('booking') || 'all';
+
+  let filteredBookingData;
+  if (filterValue === 'all') {
+    filteredBookingData = bookings;
+  }
 
   if (isLoading) return <Spinner />;
   return (
