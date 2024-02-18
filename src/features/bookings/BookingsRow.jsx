@@ -12,7 +12,7 @@ function BookingsRow({ bookingData }) {
       <h2
         className={`${isPaid ? ' bg-green-500' : 'bg-red-500'} py-.5 w-max rounded-full px-2 text-base font-semibold tracking-wide text-gray-200 shadow-sm shadow-slate-800 dark:shadow-slate-50`}
       >
-        {isPaid ? 'Paid' : 'Not paid'}
+        {isPaid ? 'Confirmed' : 'Unconfirmed'}
       </h2>
       <h2 className="">{admissionFee}</h2>
     </div>

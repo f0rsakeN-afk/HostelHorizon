@@ -5,7 +5,7 @@ export function getStudents() {
   const {
     data: students,
     isLoading,
-    
+    error,
   } = useQuery({
     queryKey: ['students'],
     queryFn: getStudentsApi,
