@@ -26,7 +26,7 @@ const AppLayout = () => {
         <Sidebar />
         <div className=" col-span-4 lg:col-span-8  ">
           <div className="grid h-screen grid-rows-12">
-            <Header />
+          <Header />
             <main className="row-span-11 scroll-smooth overflow-scroll  bg-[#ebeeef] p-4  dark:bg-[#495159]">
               <Outlet />
             </main>

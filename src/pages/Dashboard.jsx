@@ -5,10 +5,11 @@ import BookingsChart from '../features/dashboard/BookingsChart';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='flex flex-col'>
       <Title text={'Dashboard'} />
-      
-      <BookingsChart />
+      <div className="">
+        <BookingsChart />
+      </div>
     </div>
   );
 };
