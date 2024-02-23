@@ -8,3 +8,16 @@ export async function getStudentsApi() {
   }
   return data;
 }
+
+export async function addStudentsApi() {
+  const { data, error } = await supabase
+    .from('students')
+    .insert([{ some_column: 'someValue', other_column: 'otherValue' }])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error('students cannot be added');
+  }
+  return data;
+}
