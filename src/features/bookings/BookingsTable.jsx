@@ -15,6 +15,16 @@ function BookingsTable() {
     filteredBookingData = bookings;
   }
 
+  if (filterValue === 'confirmed') {
+    filteredBookingData = bookings.filter(
+      (booking) => booking.isConfirmed === true,
+    );
+  }
+  if (filterValue === 'unconfirmed') {
+    filteredBookingData = bookings.filter(
+      (booking) => booking.isConfirmed === false,
+    );
+  }
   if (isLoading) return <Spinner />;
   return (
     <div className="" role="tab">
@@ -26,7 +36,7 @@ function BookingsTable() {
         <div className="">Booking Status</div>
         <div className="">Admission Fee</div>
       </div>
-      {bookings.map((bookingData) => (
+      {filteredBookingData.map((bookingData) => (
         <BookingsRow bookingData={bookingData} key={bookingData.id} />
       ))}
     </div>

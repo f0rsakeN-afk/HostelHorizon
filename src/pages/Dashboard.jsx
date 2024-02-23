@@ -1,10 +1,14 @@
 import React from 'react';
-import Spinner from '../ui/Spinner';
+import Title from '../ui/Title';
+
+import BookingsChart from '../features/dashboard/BookingsChart';
 
 const Dashboard = () => {
   return (
     <div>
-      <Spinner />
+      <Title text={'Dashboard'} />
+      
+      <BookingsChart />
     </div>
   );
 };

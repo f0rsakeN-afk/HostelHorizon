@@ -6,5 +6,5 @@ export async function getBookingsApi() {
     console.error(error);
     throw new Error('Bookings could not be loaded');
   }
-    return data;
+  return data;
 }
