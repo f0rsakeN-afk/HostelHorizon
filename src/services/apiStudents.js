@@ -9,15 +9,15 @@ export async function getStudentsApi() {
   return data;
 }
 
-export async function addStudentsApi() {
+export async function addStudentsApi(students) {
   const { data, error } = await supabase
     .from('students')
-    .insert([{ some_column: 'someValue', other_column: 'otherValue' }])
+    .insert(students)
     .select();
 
   if (error) {
     console.error(error);
-    throw new Error('students cannot be added');
+    throw new Error('Student cannot be added');
   }
   return data;
 }
