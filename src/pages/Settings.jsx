@@ -4,7 +4,7 @@ import Title from '../ui/Title';
 
 const Settings = () => {
   return (
-    <div className="">
+    <div className="" data-aos='zoom-in'>
      <Title text={`Hostel settings`}/>
       <SettingsTable />
     </div>

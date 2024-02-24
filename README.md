@@ -1,3 +1,6 @@
+
+- Only responsive for larger screens
+
 # Hostel Horizon
 
 Hostel Horizon is a hostel management dashboard built with Tailwind CSS, React, React Hook Form, React Query, React Hot Toast, and Supabase backend. It provides CRUD operations for managing students, rooms, settings, and bookings. The dashboard also offers features like  dark mode, and user-side filtering.

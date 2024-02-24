@@ -5,7 +5,7 @@ import BookingsChart from '../features/dashboard/BookingsChart';
 
 const Dashboard = () => {
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col" data-aos="zoom-in">
       <Title text={'Dashboard'} />
       <div className="">
         <BookingsChart />

@@ -9,10 +9,13 @@ import Bookings from './pages/Bookings';
 import Rooms from './pages/Rooms';
 import Students from './pages/Students';
 import Settings from './pages/Settings';
-import Account from './pages/Account';
-import Login from './pages/Login';
+
 import PageNotFound from './pages/PageNotFound';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const App = () => {
   const queryClient = new QueryClient({
@@ -34,11 +37,10 @@ const App = () => {
               <Route path="bookings" element={<Bookings />} />
               <Route path="students" element={<Students />} />
               <Route path="settings" element={<Settings />} />
-              <Route path="account" element={<Account />} />
+
               <Route path="rooms" element={<Rooms />} />
-             
             </Route>
-            <Route path="login" element={<Login />} />
+
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>

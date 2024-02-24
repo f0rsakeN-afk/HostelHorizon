@@ -8,7 +8,7 @@ import RoomOper from '../features/rooms/RoomOper';
 const Rooms = () => {
   const [show, setShow] = useState(false);
   return (
-    <div>
+    <div data-aos='zoom-in'>
       <div className="flex items-center justify-between ">
         <Title text={`All rooms`} />
         <RoomOper />

@@ -20,7 +20,7 @@ function CreateStudentsForm() {
   return (
     <div className="">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="items-left m-auto flex flex-col justify-center gap-y-4 w-2/5">
+        <div className="items-left m-auto flex flex-col justify-center gap-y-4 lg:w-2/5">
           <div className="flex  flex-col gap-1">
             <label className="text-gray-700 dark:text-gray-200">Name</label>
             <input

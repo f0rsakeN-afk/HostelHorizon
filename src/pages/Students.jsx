@@ -6,7 +6,7 @@ import CreateStudentsForm from '../features/students/CreateStudentsForm';
 const Students = () => {
   const [show, setShow] = useState(false);
   return (
-    <div>
+    <div data-aos='zoom-in'>
       <Title text={`All students`} />
       <StudentTable />
       <section className="py-4 text-center">
